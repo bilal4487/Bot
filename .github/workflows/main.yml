@@ -1,0 +1,23 @@
+name: WhatsApp Bot
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install venom-bot random-emoji
+      
+      - name: Run WhatsApp Bot
+        run: node bot.js
